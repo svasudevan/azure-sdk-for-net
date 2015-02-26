@@ -111,7 +111,19 @@ namespace Microsoft.WindowsAzure.Management.Compute.Models
             get { return this._sourceImageName; }
             set { this._sourceImageName = value; }
         }
-        
+
+        private int? _resizedSizeInGb = null;
+
+        /// <summary>
+        /// Optional. Specifies the name of the source image that was used to
+        /// provision the virtual machine.
+        /// </summary>
+        public int? ResizedSizeInGB
+        {
+            get { return this._resizedSizeInGb; }
+            set { this._resizedSizeInGb = value; }
+        }
+
         /// <summary>
         /// Initializes a new instance of the OSVirtualHardDisk class.
         /// </summary>

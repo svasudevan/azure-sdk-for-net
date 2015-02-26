@@ -2058,6 +2058,13 @@ namespace Microsoft.WindowsAzure.Management.Compute
                         iOTypeElement2.Value = parameters.OSVirtualHardDisk.IOType;
                         oSVirtualHardDiskElement.Add(iOTypeElement2);
                     }
+
+                    if (parameters.OSVirtualHardDisk.ResizedSizeInGB != null)
+                    {
+                        XElement resizedSizeInGbElement = new XElement(XName.Get("ResizedSizeInGB", "http://schemas.microsoft.com/windowsazure"));
+                        resizedSizeInGbElement.Value = parameters.OSVirtualHardDisk.ResizedSizeInGB.Value.ToString(CultureInfo.InvariantCulture);
+                        oSVirtualHardDiskElement.Add(resizedSizeInGbElement);
+                    }
                 }
                 
                 if (parameters.RoleSize != null)
@@ -3157,6 +3164,13 @@ namespace Microsoft.WindowsAzure.Management.Compute
                                 XElement iOTypeElement2 = new XElement(XName.Get("IOType", "http://schemas.microsoft.com/windowsazure"));
                                 iOTypeElement2.Value = roleListItem.OSVirtualHardDisk.IOType;
                                 oSVirtualHardDiskElement.Add(iOTypeElement2);
+                            }
+
+                            if (roleListItem.OSVirtualHardDisk.ResizedSizeInGB != null)
+                            {
+                                XElement resizedSizeInGBElement = new XElement(XName.Get("ResizedSizeInGB", "http://schemas.microsoft.com/windowsazure"));
+                                resizedSizeInGBElement.Value = roleListItem.OSVirtualHardDisk.ResizedSizeInGB.ToString();
+                                oSVirtualHardDiskElement.Add(resizedSizeInGBElement);
                             }
                         }
                         
@@ -7101,6 +7115,13 @@ namespace Microsoft.WindowsAzure.Management.Compute
                                 {
                                     string iOTypeInstance2 = iOTypeElement2.Value;
                                     oSVirtualHardDiskInstance.IOType = iOTypeInstance2;
+                                }
+
+                                XElement resizedSizeInGBElement = oSVirtualHardDiskElement.Element(XName.Get("ResizedSizeInGB", "http://schemas.microsoft.com/windowsazure"));
+                                if (resizedSizeInGBElement != null)
+                                {
+                                    int? resizedSizeInGb = int.Parse(resizedSizeInGBElement.Value);
+                                    oSVirtualHardDiskInstance.ResizedSizeInGB = resizedSizeInGb;
                                 }
                             }
                         }

@@ -6943,6 +6943,13 @@ namespace Microsoft.WindowsAzure.Management.Compute
                                             string iOTypeInstance2 = iOTypeElement2.Value;
                                             oSVirtualHardDiskInstance.IOType = iOTypeInstance2;
                                         }
+
+                                        XElement resizedSizeInGBElement = oSVirtualHardDiskElement.Element(XName.Get("ResizedSizeInGB", "http://schemas.microsoft.com/windowsazure"));
+                                        if (resizedSizeInGBElement != null)
+                                        {
+                                            int? resizedSizeInGb = int.Parse(resizedSizeInGBElement.Value);
+                                            oSVirtualHardDiskInstance.ResizedSizeInGB = resizedSizeInGb;
+                                        }
                                     }
                                     
                                     XElement roleSizeElement = roleListElement.Element(XName.Get("RoleSize", "http://schemas.microsoft.com/windowsazure"));
@@ -8799,6 +8806,13 @@ namespace Microsoft.WindowsAzure.Management.Compute
                                         {
                                             string iOTypeInstance2 = iOTypeElement2.Value;
                                             oSVirtualHardDiskInstance.IOType = iOTypeInstance2;
+                                        }
+
+                                        XElement resizedSizeInGBElement = oSVirtualHardDiskElement.Element(XName.Get("ResizedSizeInGB", "http://schemas.microsoft.com/windowsazure"));
+                                        if (resizedSizeInGBElement != null)
+                                        {
+                                            int? resizedSizeInGb = int.Parse(resizedSizeInGBElement.Value);
+                                            oSVirtualHardDiskInstance.ResizedSizeInGB = resizedSizeInGb;
                                         }
                                     }
                                     
